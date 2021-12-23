@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const uuid = require('uuid/v4');
 
 const app = express();
+port = 5555
 
 const DUMMY_PRODUCTS = []; // not a database, just some in-memory storage for now
 
@@ -48,4 +49,4 @@ app.post('/product', (req, res, next) => {
     .json({ message: 'Created new product.', product: createdProduct });
 });
 
-app.listen(5000); // start Node + Express server on port 5000
+app.listen(port); // start Node + Express server on port 5000
