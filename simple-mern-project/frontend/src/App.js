@@ -57,7 +57,7 @@ function App() {
     } catch (error) {
       alert(error.message || 'Something went wrong!');
     }
-  };
+  }; // addProductHandler()
 
   return (
     <React.Fragment>
