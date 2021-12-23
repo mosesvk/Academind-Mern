@@ -49,4 +49,4 @@ app.post('/product', (req, res, next) => {
     .json({ message: 'Created new product.', product: createdProduct });
 });
 
-app.listen(5555); // start Node + Express server on port 5000
+app.listen(port); // start Node + Express server on port 5000
