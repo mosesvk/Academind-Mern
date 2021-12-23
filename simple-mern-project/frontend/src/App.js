@@ -30,7 +30,7 @@ function App() {
         price: +productPrice // "+" to convert string to number
       };
       let hasError = false;
-      const response = await fetch('http://localhost:5000/products', {
+      const response = await fetch('http://localhost:5555/product', {
         method: 'POST',
         body: JSON.stringify(newProduct),
         headers: {
