@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 import MainHeader from "./MainHeader";
 import NavLinks from "./NavLinks";
-import "./MainNavigation.css";
 import SideDrawer from "./SideDrawer";
+import Backdrop from '../UIElements/Backdrop';
+import "./MainNavigation.css";
 
 const MainNavigation = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -14,12 +15,13 @@ const MainNavigation = () => {
     setDrawerIsOpen(true)
   }
 
-  closeDrawerHandler = () => {
+  const closeDrawerHandler = () => {
     setDrawerIsOpen(false)
   }
 
   return (
     <>
+      {drawerIsOpen && <Backdrop closeDrawerHandler={closeDrawerHandler} />}
       {drawerIsOpen && (
         <SideDrawer>
           <nav className="main-navigation__drawer-nav">
