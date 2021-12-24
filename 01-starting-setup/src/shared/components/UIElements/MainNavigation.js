@@ -1,10 +1,13 @@
 import React from 'react'
 
+import MainHeader from './MainHeader'
+import './MainNavigation.css'
+
 const MainNavigation = () => {
   return (
-    <div>
+    <MainHeader>
       
-    </div>
+    </MainHeader>
   )
 }
 
