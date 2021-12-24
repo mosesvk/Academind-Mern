@@ -4,7 +4,8 @@
   min-width: 17.5rem;
 }
 
-.user-item a {
+.user-item a,
+.link {
   display: flex;
   align-items: center;
   width: 100%;
@@ -16,7 +17,9 @@
 }
 
 .user-item a:hover,
-.user-item a:active {
+.user-item a:active,
+.link:hover,
+.link:active {
   background: #ffd900;
 }
 
