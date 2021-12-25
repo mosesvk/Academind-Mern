@@ -5,6 +5,7 @@ import Button from "../../shared/components/FormElements/Button";
 import "./PlaceItem.css";
 
 const PlaceItem = (props) => {
+  console.log(props.mapAddress)
   return (
     <li className="place-item">
       <Card className='place-item__content'>
@@ -17,7 +18,7 @@ const PlaceItem = (props) => {
           <p>{props.description}</p>
         </div>
         <div className="place-item__actions">
-          <Button inverse>VIEW ON MAP</Button>
+          <Button inverse href={props.mapAddress} target='_blank'>VIEW ON MAP</Button>
           <Button to={`/places/${props.id}`}>EDIT</Button>
           <Button danger>DELETE</Button>
         </div>
