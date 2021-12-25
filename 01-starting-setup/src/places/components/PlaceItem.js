@@ -5,10 +5,10 @@ import Button from "../../shared/components/FormElements/Button";
 import "./PlaceItem.css";
 
 const PlaceItem = (props) => {
-  console.log(props.mapAddress)
+  console.log(props.mapAddress);
   return (
     <li className="place-item">
-      <Card className='place-item__content'>
+      <Card className="place-item__content">
         <div className="place-item__image">
           <img src={props.image} alt={props.title} />
         </div>
@@ -18,7 +18,9 @@ const PlaceItem = (props) => {
           <p>{props.description}</p>
         </div>
         <div className="place-item__actions">
-          <a href={props.mapAddress} target='_blank' rel="noopener"><Button inverse>VIEW ON MAP</Button></a>
+          <a href={props.mapAddress} target="_blank" rel="noopener">
+            <Button inverse>VIEW ON MAP</Button>
+          </a>
           <Button to={`/places/${props.id}`}>EDIT</Button>
           <Button danger>DELETE</Button>
         </div>
