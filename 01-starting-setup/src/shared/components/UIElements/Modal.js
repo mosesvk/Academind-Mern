@@ -29,7 +29,7 @@ const ModalOverlay = (props) => {
   return ReactDOM.createPortal(content, document.getElementById("modal-hook"));
 };
 
-const Modal = () => {
+const Modal = (props) => {
   return (
     <>
       {props.show && <BackDrop onClick={props.onCancel} />}
