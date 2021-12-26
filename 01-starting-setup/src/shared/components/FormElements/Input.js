@@ -1,6 +1,8 @@
 import React from "react";
 
-const Input = () => {
+import './Input.css'
+
+const Input = (props) => {
   const element =
     props.element === "input" ? (
       <input  id={props.id} type={props.type} placeholder={props.placeholder} />
