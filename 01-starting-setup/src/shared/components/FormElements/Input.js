@@ -28,7 +28,7 @@ const Input = (props) => {
     isTouched: false,
     isValid: false,
   });
-
+  console.log(props)
   const { id, onInput } = props;
   const { value, isValid } = inputState;
 
@@ -44,7 +44,7 @@ const Input = (props) => {
     });
   };
 
-  const touchHandler = (event) => {
+  const touchHandler = () => {
     dispatch({ type: "TOUCH" });
   };
 
