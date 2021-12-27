@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
 
-import Input from "../../shared/components/FormElements/Input";
-import { VALIDATOR_REQUIRE } from '../../shared/util/validators'
+import Input from "../../SHARED/components/FormElements/Input";
+import { VALIDATOR_REQUIRE } from "../../SHARED/util/validators";
 import "./NewPlace.css";
 
 const NewPlace = () => {
+  const titleInputHandler = useCallback((id, value, isValid) => {
+    
+  }, []);
+
   return (
     <form className="place-form">
       <Input
@@ -13,6 +17,7 @@ const NewPlace = () => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title"
+        onInput={titleInputHandler}
       />
     </form>
   );
