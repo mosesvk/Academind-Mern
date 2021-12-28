@@ -52,5 +52,5 @@ export const useForm = (initialInputs, initialFormValidity) => {
     })
   }, [])
 
-  return [formState, inputHandler, setFormdata]
+  return [formState, inputHandler, setFormData]
 }
