@@ -55,7 +55,7 @@ const UpdatePlace = () => {
 
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId); 
 
-
+ 
   const placeUpdateHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs)

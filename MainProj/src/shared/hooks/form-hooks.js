@@ -39,5 +39,7 @@ export const useForm = (initialInputs, initialFormValidity) => {
     });
   }, []);
 
+  const setFormdata = useCallback()
+
   return [formState, inputHandler]
 }
