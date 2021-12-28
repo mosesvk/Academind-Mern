@@ -39,6 +39,8 @@ const DUMMY_PLACES = [
   },
 ];
 
+fetch().then()
+
 const UpdatePlace = () => {
   const placeId = useParams().placeId;
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId); 
