@@ -38,6 +38,6 @@ export const useForm = (initialInputs, initialFormValidity) => {
       inputId: id
     });
   }, []);
- 
+
   return [formState, inputHandler]
 }
