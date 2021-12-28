@@ -54,6 +54,11 @@ const UpdatePlace = () => {
     }
   }, true)
 
+  const placeUpdateHandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs)
+  } 
+
   if (!identifiedPlace) {
     return (
       <div className="center">
@@ -63,7 +68,7 @@ const UpdatePlace = () => {
   }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeUpdateHandler}>
       <Input
         id="title"
         element="input"
@@ -73,7 +78,7 @@ const UpdatePlace = () => {
         errorText='Please Enter Valid Title'
         onInput={inputHandler}
         initialValue={formState.inputs.title.value}
-        initialIsValid={formState.inputs.title.isValid}
+        initialValid={formState.inputs.title.isValid}
       />
       <Input
         id="description"
@@ -83,7 +88,7 @@ const UpdatePlace = () => {
         errorText='Please Enter Valid Description (Min. 5 Characters)'
         onInput={inputHandler}
         initialValue={formState.inputs.description.value}
-        initialIsValid={formState.inputs.description.isValid}
+        initialValid={formState.inputs.description.isValid}
       />
       <Button type='submit' disabled={!formState.isValid} >
         UPDATE PLACE
