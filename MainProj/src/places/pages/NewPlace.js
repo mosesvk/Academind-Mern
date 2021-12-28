@@ -14,8 +14,8 @@ const NewPlace = () => {
   const [formState, inputHandler ] = useForm(     
     {
       title: {
-      value: '',
-      isValid: false
+        value: '',
+        isValid: false
       },
       description: {
         value: '',
