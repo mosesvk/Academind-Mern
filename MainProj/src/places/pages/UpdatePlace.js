@@ -87,6 +87,14 @@ const UpdatePlace = () => {
     );
   }
 
+  if (!formState.inputs.title.value) {
+    return ( 
+      <div className="center">
+        <h2>Loading...</h2>
+      </div>
+    )
+  }
+
   return (
     <form className="place-form" onSubmit={placeUpdateHandler}>
       <Input
