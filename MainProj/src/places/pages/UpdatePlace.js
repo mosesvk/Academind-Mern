@@ -9,6 +9,7 @@ import {
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hooks";
 import "./PlaceForm.css";
+import Card from "../../shared/components/UIElements/Card";
 
 const DUMMY_PLACES = [
   {
@@ -86,7 +87,9 @@ const UpdatePlace = () => {
   if (!identifiedPlace) {
     return (
       <div className="center">
-        <h2>Could Not Find Place!</h2>
+        <Card>
+          <h2>Could Not Find Place!</h2>
+        </Card>
       </div>
     );
   }
