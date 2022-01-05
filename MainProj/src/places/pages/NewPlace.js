@@ -6,12 +6,11 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
-import { useForm } from '../../shared/hooks/form-hooks';
+import { useForm } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
 
-
 const NewPlace = () => {
-  const [formState, inputHandler ] = useForm(     
+  const [formState, inputHandler] = useForm(
     {
       title: {
         value: '',
@@ -22,17 +21,17 @@ const NewPlace = () => {
         isValid: false
       },
       address: {
-        value: '', 
+        value: '',
         isValid: false
       }
-    }, 
+    },
     false
-  )
+  );
 
-  const placeSubmitHandler = (event) => {
+  const placeSubmitHandler = event => {
     event.preventDefault();
-    console.log(formState.inputs)
-  }
+    console.log(formState.inputs); // send this to the backend!
+  };
 
   return (
     <form className="place-form" onSubmit={placeSubmitHandler}>
@@ -58,7 +57,7 @@ const NewPlace = () => {
         element="input"
         label="Address"
         validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a valid Address"
+        errorText="Please enter a valid address."
         onInput={inputHandler}
       />
       <Button type="submit" disabled={!formState.isValid}>

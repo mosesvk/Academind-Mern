@@ -18,10 +18,18 @@ const App = () => {
       <MainNavigation />
       <main>
         <Switch>
-          <Route path="/" exact component={Users} />
-          <Route path="/:userId/places" exact component={UserPlaces} />
-          <Route path="/places/new" exact component={NewPlace} />
-          <Route path="/places/:placeId" component={UpdatePlace}/>
+          <Route path="/" exact>
+            <Users />
+          </Route>
+          <Route path="/:userId/places" exact>
+            <UserPlaces />
+          </Route>
+          <Route path="/places/new" exact>
+            <NewPlace />
+          </Route>
+          <Route path="/places/:placeId">
+            <UpdatePlace />
+          </Route>
           <Redirect to="/" />
         </Switch>
       </main>
