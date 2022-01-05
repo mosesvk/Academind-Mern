@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import Input from "../../shared/components/FormElements/Input";
@@ -11,6 +11,8 @@ import { useForm } from "../../shared/hooks/form-hook";
 import "./Auth.css";
 
 const Auth = () => {
+  const [isLoginMode, setIsLoginMode] = useState(true)
+
   const [formState, inputHandler] = useForm({
     email: {
       value: "",
@@ -22,11 +24,16 @@ const Auth = () => {
     },
   });
 
+  const authSubmitHandler = (event) => {
+    event.preventDefault()
+    console.log(formState.inputs)
+  }
+
   return (
     <Card className="authentication">
       <h2>Login Required</h2>
       <hr />
-      <form>
+      <form onSubmit={authSubmitHandler}>
         <Input
           element="input"
           id="email"
@@ -34,7 +41,7 @@ const Auth = () => {
           label="E-mail"
           validators={[VALIDATOR_EMAIL()]}
           errorText="Please enter a valid email address"
-          onChange={inputHandler}
+          onInput={inputHandler}
         />
         <Input
           element="input"
@@ -43,9 +50,10 @@ const Auth = () => {
           label="Password"
           validators={[VALIDATOR_MINLENGTH(5)]}
           errorText="Please enter a valid password, at least 5 characters"
-          onChange={inputHandler}
+          onInput={inputHandler}
         />
-        <Button type='submit'>LOGIN</Button>
+        <Button type='submit' disabled={!formState.isValid}>LOGIN</Button>
+        <Button invers onClick={switchModeHandler}>REGISTER</Button>
       </form>
     </Card>
   );
