@@ -1,10 +1,14 @@
 import React from 'react'
 
+import Card from '../../shared/components/UIElements/Card'
+import './Auth.css'
+
 const Auth = () => {
   return (
-    <div>
-      Auth Page
-    </div>
+    <Card className='authentication'>
+      <h2>Login Required</h2>
+      <form></form>
+    </Card>
   )
 }
 
