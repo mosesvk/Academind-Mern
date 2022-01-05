@@ -27,6 +27,9 @@ const PlaceItem = props => {
           <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
+      <Modal>
+        <p>Do you want to proceed and delete this place? Please note that it can't be undone thereafter</p>
+      </Modal>
       <li className="place-item">
         <Card className="place-item__content">
           <div className="place-item__image">
