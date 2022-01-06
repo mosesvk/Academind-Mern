@@ -1,11 +1,10 @@
-const fs = require('fs');
+const http = require('http')
+const PORT = 5555
+const server = http.createServer((req, res) => {
+  console.log('INCOMING REQUEST')
+  console.log(req.method, req.url)
 
-const userName = 'Max';
+  res.end('<h1>Success!</h1>')
+})
 
-fs.writeFile('user-data.txt', 'Name: ' + userName, (err) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log('WROTE FILE');
-});
+server.listen(PORT)
