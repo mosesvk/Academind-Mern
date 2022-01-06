@@ -16,12 +16,12 @@ const DUMMY_PLACES = [
   },
 ];
 
-router.get("/pid", (req, res, next) => {
+router.get("/:pid", (req, res, next) => {
   const placeId = req.params.pid // params -> { pid: 'p1' }
   const place = DUMMY_PLACES.find(item => {
     return item.id === placeId
   })
-  res.json({ message: "It Works!" });
+  res.json({ place }); // { place } = { place: place }
 });
 
 module.exports = router;
