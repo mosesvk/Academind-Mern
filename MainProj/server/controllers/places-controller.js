@@ -45,5 +45,11 @@ const getPlaceByUserId = (req, res, next) => {
   res.json({place})
 }
 
+const createPlace = (req, res, next) => {
+  // taken from the bodyParser in main app.js
+  const {} = req.body
+}
+
 exports.getPlaceById = getPlaceById
 exports.getPlaceByUserId = getPlaceByUserId
+exports.createPlace = createPlace
