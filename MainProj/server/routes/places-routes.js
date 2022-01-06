@@ -1,11 +1,11 @@
 const express = require("express");
 
-const HttpError = require('../models/error-http')
+const placesControllers = require('../controllers/places-controller')
 
 const router = express.Router();
 
-router.get("/:pid", );
+router.get("/:pid", placesControllers.getPlaceById);
 
-router.get("/user/:uid", )
+router.get("/user/:uid", placesControllers.getPlaceByUserId)
 
 module.exports = router;
