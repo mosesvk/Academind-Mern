@@ -27,7 +27,7 @@ router.get("/:pid", (req, res, next) => {
     const error = new Error('Could not find place for the provided id')
     error.code = 404
     // from error middleware in server app.js
-    next(error)
+    return next(error)
   }
 
   res.json({ place }); // { place } = { place: place }
@@ -44,7 +44,7 @@ router.get("/user/:uid", (req, res, next) => {
     const error = new Error('Could not find place for the user id')
     error.code = 404
     // from error middleware in server app.js
-    next(error)
+    return next(error)
   }
 
   res.json({place})
