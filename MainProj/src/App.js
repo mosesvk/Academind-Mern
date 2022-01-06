@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -29,22 +29,22 @@ const App = () => {
 
   if (isLoggedIn) {
     routes = (
-      <>
+      <Switch>
       <Route path="/" exact component={Users} />
       <Route path="/:userId/places" exact component={UserPlaces} />
       <Route path="/places/new" exact component={NewPlace} />
       <Route path="/places/:placeId" component={UpdatePlace} />
       <Redirect to='/' />
-    </>
+    </Switch>
     );
   } else {
     routes = (
-      <>
+      <Switch>
         <Route path="/" exact component={Users} />
         <Route path="/:userId/places" exact component={UserPlaces} />
         <Route path="/auth" exact component={Auth} />
         <Redirect to='/auth' />
-      </>
+      </Switch>
     )
   }
 
@@ -55,9 +55,7 @@ const App = () => {
       <Router>
         <MainNavigation />
         <main>
-          <Switch>
-            {routes}
-          </Switch>
+          {routes}
         </main>
       </Router>
     </AuthContext.Provider>
