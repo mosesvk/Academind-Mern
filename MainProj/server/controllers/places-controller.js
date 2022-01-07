@@ -63,11 +63,10 @@ const createPlace = async  (req, res, next) => {
   // using google api to extract coordinates address
   let coordinates;
   try {
-    coordinates = await getCoordsForAddress(address)
+    coordinates = await getCoordsForAddress(address);
   } catch(error) {
-    return next(error)
+    return next(error);
   }
-  
 
   const createdPlace = {
     id: uuidv4(),
