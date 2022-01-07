@@ -97,6 +97,10 @@ const updatePlace = (req, res, next) => {
 const deletePlace = (req, res, next) => {
   const placeId = req.params.pid;
   const deletedPlace = DUMMY_PLACES.find(item => item.id === placeId)
+  if (!deletedPlace) {
+    return next(new HttpError('Could not find a place for that id', 404))
+  }
+
   DUMMY_PLACES = DUMMY_PLACES.filter(item => item.id === placeId)
 
   res.status(200).json({message: 'Deleted place: ', place: deletedPlace})
