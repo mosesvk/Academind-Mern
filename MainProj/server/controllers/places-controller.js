@@ -67,14 +67,19 @@ const createPlace = (req, res, next) => {
     location: coordinates,
     address,
     creator,
-  };
+  }; 
 
   DUMMY_PLACES.push(createdPlace);
 
   res.status(201).json({ place: createdPlace });
-};
+}; 
 
 const updatePlace = (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    console.log(errors)
+    return next(new HttpError('Invalid inputs passed, please check your data', 422))
+  }
   // taken from the bodyParser in main app.js
   const { title, description } = req.body;
   const placeId = req.params.pid;
