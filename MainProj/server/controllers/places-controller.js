@@ -53,7 +53,8 @@ const getPlacesByUserId = (req, res, next) => {
 const createPlace = (req, res, next) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    next(new HttpError('Invalid inputs passed, please check your data'))
+    console.log(errors)
+    return next(new HttpError('Invalid inputs passed, please check your data', 422))
   }
 
   // taken from the bodyParser in main app.js
