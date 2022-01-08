@@ -1,7 +1,10 @@
+const MongoClient = require('mongodb').MongoClient
 const { v4: uuidv4 } = require("uuid");
 const { validationResult } = require('express-validator')
 
 const HttpError = require('../models/error-http')
+
+const url = 'AIzaSyCWvdYUvMMFnRAaevMBQcp20oLW_0uVKXM'
 
 const DUMMY_USERS = [
   {
