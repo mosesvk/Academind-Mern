@@ -5,7 +5,6 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/error-http');
 const getCoordsForAddress = require('../util/location');
 const Place = require('../models/place');
-const place = require('../models/place');
 
 let DUMMY_PLACES = [
   {
@@ -44,7 +43,7 @@ const getPlaceById = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ place: toObject({ getters: true }) }); 
+  res.json({ place: place.toObject({ getters: true }) }); 
 };
 
 const getPlacesByUserId = (req, res, next) => {
