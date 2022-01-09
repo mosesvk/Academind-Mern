@@ -18,7 +18,7 @@ const getUsers = (req, res, next) => {
   res.status(200).json({ users: DUMMY_USERS });
 };
 
-const signup = (req, res, next) => {
+const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
@@ -42,7 +42,7 @@ const signup = (req, res, next) => {
     );
     return next(error);
   }
-
+f
   const createdUser = new User({
     name,
     username,
