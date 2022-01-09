@@ -42,7 +42,7 @@ const signup = async (req, res, next) => {
     );
     return next(error);
   }
-f
+
   const createdUser = new User({
     name,
     username,
