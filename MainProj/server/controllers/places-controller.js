@@ -26,7 +26,7 @@ const getPlaceById = async (req, res, next) => {
 
   let place;
   try {
-    place = await Place.getPlaceById(placeId);
+    place = await Place.findById(placeId);
   } catch (err) {
     // error if something wrong with our GET request above (.getPlaceById)
     const error = new HttpError(
