@@ -4,7 +4,8 @@ const { validationResult } = require('express-validator')
 
 const HttpError = require("../models/error-http");
 const getCoordsForAddress = require('../util/location');
-const Place = require('../models/place')
+const Place = require('../models/place');
+const place = require('../models/place');
 
 let DUMMY_PLACES = [
   {
@@ -20,12 +21,18 @@ let DUMMY_PLACES = [
   },
 ];
 
-const getPlaceById = (req, res, next) => {
+const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid; // params -> { pid: 'p1' }
 
-  const place = DUMMY_PLACES.find((item) => {
-    return item.id === placeId;
-  });
+  try {
+    const place = await Place.getPlaceById(placeId)
+  } catch(err) {
+    const error = new HttpError(
+      'Something went wrong. Could not find a place', 
+      500
+    );
+    return next(error)
+  }
 
   if (!place) {
     // from models folder
