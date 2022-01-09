@@ -69,16 +69,24 @@ const createPlace = async  (req, res, next) => {
     return next(error);
   }
 
-  const createdPlace = {
-    id: uuidv4(),
-    title,
-    description,
+  const createdPlace = new Place({
+    title, 
+    description, 
+    address, 
     location: coordinates,
-    address,
-    creator,
-  }; 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/San_Francisco_China_Town_MC.jpg', 
+    creator
+  })
 
-  DUMMY_PLACES.push(createdPlace);
+  try {
+    await createdPlace.save();
+  } catch (err) {
+    const error = new HttpError(
+      'Created Place Failed, please try again',
+      500
+    );
+    return next(error)
+  }
 
   res.status(201).json({ place: createdPlace });
 }; 
