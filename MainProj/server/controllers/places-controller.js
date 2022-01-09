@@ -43,24 +43,34 @@ const getPlaceById = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ place: place.toObject({ getters: true }) }); 
+  res.json({ place: place.toObject({ getters: true }) });
 };
 
-const getPlacesByUserId = (req, res, next) => {
+const getPlacesByUserId = async (req, res, next) => {
   const userId = req.params.uid;
 
-  const places = DUMMY_PLACES.filter((item) => {
-    return item.creator === userId;
-  });
+  let places;
+  try {
+    places = await Place.find({ creator: userId });
+  } catch (err) {
+    const error = new HttpError(
+      'Fetching places failed, please try again',
+      500
+    );
+
+    return next(error);
+  }
 
   if (!places || places.length === 0) {
-    // from models folder
     return next(
-      new HttpError('Could not find places for the provided user id', 404)
+      new HttpError('Could not find any places for the provided userId', 404)
     );
   }
 
-  res.json({ places });
+  // we cannot use the place.toObject() like we did in getPlaceById() line 46... because the .find() method on line 54 returns an object and error
+  res.json({
+    places: places.map((place) => place.toObject({ getters: true })),
+  });
 };
 
 const createPlace = async (req, res, next) => {
