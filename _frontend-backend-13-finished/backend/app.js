@@ -39,10 +39,10 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    `mongodb+srv://academind:ORlnOPLKvIH9M9hP@cluster0-ntrwp.mongodb.net/mern?retryWrites=true&w=majority`
+    'mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/places?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false}
   )
   .then(() => {
-    app.listen(5000);
+    app.listen(5555);
   })
   .catch(err => {
     console.log(err);

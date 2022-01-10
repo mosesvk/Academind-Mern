@@ -41,6 +41,6 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(url)
   .then(() => {
-    app.listen(5555);
+    app.listen(5500);
   })
   .catch((err) => console.log(err));
