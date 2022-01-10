@@ -14,10 +14,13 @@ const DUMMY_USERS = [
   },
 ];
 
-const getUsers = (req, res, next) => {
+
+const getUsers = async(req, res, next) => {
   let users;
   try {
-    users = User.find({}, '-password');
+    //.find is an asynchronous task so we need async await
+    // if not, then this will automatically be an error
+    users = await User.find({}, '-password');
   } catch (err) {
     const error = new HttpError(
       'Fetching users failed, please try again later.',
