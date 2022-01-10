@@ -4,16 +4,15 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/error-http');
 const User = require('../models/user');
 
-const DUMMY_USERS = [
-  {
-    id: 'u1',
-    name: 'Moses Kaumatule',
-    username: 'test',
-    email: 'test@test.com',
-    password: 'testers',
-  },
-];
-
+// const DUMMY_USERS = [
+//   {
+//     id: 'u1',
+//     name: 'Moses Kaumatule',
+//     username: 'test',
+//     email: 'test@test.com',
+//     password: 'testers',
+//   },
+// ];
 
 const getUsers = async(req, res, next) => {
   let users;
@@ -41,7 +40,7 @@ const signup = async (req, res, next) => {
       new HttpError('Invalid inputs passed. Please check your data', 422)
     );
   }
-  const { name, username, email, password, places } = req.body;
+  const { name, username, email, password } = req.body;
 
   let existingUser;
   try {
@@ -66,7 +65,7 @@ const signup = async (req, res, next) => {
     image:
       'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
     password,
-    places,
+    places: [],
   });
 
   try {
@@ -79,7 +78,7 @@ const signup = async (req, res, next) => {
   res.status(201).json({ user: createdUser.toObject({ getters: true }) });
 };
 
-const login = (req, res, next) => {
+const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   let existingUser;
