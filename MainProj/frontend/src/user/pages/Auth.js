@@ -91,15 +91,17 @@ const Auth = () => {
         formData.append('name', formState.inputs.name.value)
         formData.append('password', formState.inputs.password.value)
         formData.append('image', formState.inputs.image.value)
-        
+        // // instead of adding the below code in responseData sendRequest         
+        //    JSON.stringify({
+        //     name: formState.inputs.name.value,
+        //     email: formState.inputs.email.value,
+        //     password: formState.inputs.password.value
+        //    }), 
+
         const responseData = await sendRequest(
           'http://localhost:5555/api/users/signup',
           'POST',
-          JSON.stringify({
-            name: formState.inputs.name.value,
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value
-          }),
+          formData,
           {
             'Content-Type': 'application/json'
           }
