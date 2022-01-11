@@ -101,10 +101,7 @@ const Auth = () => {
         const responseData = await sendRequest(
           'http://localhost:5555/api/users/signup',
           'POST',
-          formData,
-          {
-            'Content-Type': 'application/json'
-          }
+          formData
         );
 
         auth.login(responseData.user.id);
