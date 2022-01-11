@@ -1,6 +1,9 @@
+const fs = require('fs');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 const placesRoutes = require('./routes/places-routes');
 const usersRoutes = require('./routes/users-routes');
@@ -30,6 +33,9 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  if (req.file) {
+    fs.unlink(req.file.path, (err) => console.log(err));
+  }
   if (res.headerSent) {
     return next(error);
   }
@@ -39,11 +45,17 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/places?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false}
+    'mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/places?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
   )
   .then(() => {
     app.listen(5555);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
