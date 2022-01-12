@@ -144,7 +144,7 @@ const login = async (req, res, next) => {
     );
   } catch (err) {
     const error = new HttpError(
-      'Signing up failed, please try again later.',
+      'Logging in failed, please try again later.',
       500
     );
     return next(error);
@@ -152,7 +152,11 @@ const login = async (req, res, next) => {
 
   res.json({
     message: 'Logged in!',
-    user: existingUser.toObject({ getters: true }),
+    user: existingUser.toObject({
+      userId: existingUser.id,
+      email: existingUser.email,
+      token: token,
+    }),
   });
 };
 
