@@ -12,7 +12,7 @@ router.get('/user/:uid', placesControllers.getPlacesByUserId);
 
 router.post(
   '/',
-  fileUpload.single('image')
+  fileUpload.single('image'),
   [
     check('title')
       .not()
