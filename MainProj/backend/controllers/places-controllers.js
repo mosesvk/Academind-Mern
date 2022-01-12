@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const uuid = require('uuid/v4');
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
@@ -54,7 +56,11 @@ const getPlacesByUserId = async (req, res, next) => {
     );
   }
 
-  res.json({ places: userWithPlaces.places.map(place => place.toObject({ getters: true })) });
+  res.json({
+    places: userWithPlaces.places.map((place) =>
+      place.toObject({ getters: true })
+    ),
+  });
 };
 
 const createPlace = async (req, res, next) => {
@@ -79,8 +85,8 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     location: coordinates,
-    image:req.file.path ,
-    creator
+    image: req.file.path,
+    creator,
   });
 
   let user;
@@ -104,9 +110,9 @@ const createPlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await createdPlace.save({ session: sess }); 
-    user.places.push(createdPlace); 
-    await user.save({ session: sess }); 
+    await createdPlace.save({ session: sess });
+    user.places.push(createdPlace);
+    await user.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
@@ -171,6 +177,8 @@ const deletePlace = async (req, res, next) => {
     return next(error);
   }
 
+  const imagePath = place.image;
+
   if (!place) {
     const error = new HttpError('Could not find place for this id.', 404);
     return next(error);
@@ -179,9 +187,9 @@ const deletePlace = async (req, res, next) => {
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await place.remove({session: sess});
+    await place.remove({ session: sess });
     place.creator.places.pull(place);
-    await place.creator.save({session: sess});
+    await place.creator.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
@@ -190,7 +198,11 @@ const deletePlace = async (req, res, next) => {
     );
     return next(error);
   }
-  
+
+  fs.unlink(imagePath, (err) => {
+    console.log(err);
+  });
+
   res.status(200).json({ message: 'Deleted place.' });
 };
 
