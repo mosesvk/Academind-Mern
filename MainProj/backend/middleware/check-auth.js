@@ -3,6 +3,10 @@ const jwt = require('jsonwebtoken')
 const HttpError = require('../models/http-error');
 
 module.exports = (req, res, next) => {
+  if (req.method === 'options'){
+    return next();
+  }
+
   // Authorization: 'Bearer TOKEN' so we can access that TOKEN by going into authorization[1]
   let token;
   try {

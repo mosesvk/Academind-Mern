@@ -68,7 +68,8 @@ const App = () => {
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn: isLoggedIn,
+        isLoggedIn: !!token,
+        token: token,
         userId: userId,
         login: login,
         logout: logout
