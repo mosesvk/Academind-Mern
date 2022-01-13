@@ -1,7 +1,9 @@
 {
   "env": {
-    "DB_USER": "mosesvk",
-    "DB_PASSWORD": "Lukifanga2656",
-    "DB_NAME": "places"
+    "DB_USER": "mosesveuki",
+    "DB_PASSWORD": "solia",
+    "DB_NAME": "places",
+    "GOOGLE_API_KEY": "AIzaSyCWvdYUvMMFnRAaevMBQcp20oLW_0uVKXM",
+    "JWT_KEY": "supersecret_dont_share"
   }
 }

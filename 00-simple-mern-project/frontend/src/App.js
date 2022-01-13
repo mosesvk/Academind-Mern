@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
-      const response = await fetch('http://localhost:5555/products');
+      const response = await fetch('http://process.env.REACT_APP_BACKEND_URL/products');
 
       const responseData = await response.json();
 
@@ -30,7 +30,7 @@ function App() {
         price: +productPrice // "+" to convert string to number
       };
       let hasError = false;
-      const response = await fetch('http://localhost:5555/product', {
+      const response = await fetch('http://process.env.REACT_APP_BACKEND_URL/product', {
         method: 'POST',
         body: JSON.stringify(newProduct),
         headers: {

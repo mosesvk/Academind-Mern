@@ -55,7 +55,7 @@ const Auth = () => {
 
     } else {
       try {
-        const response = await fetch('http://localhost:5555/api/users/signup', {
+        const response = await fetch('http://process.env.REACT_APP_BACKEND_URL/api/users/signup', {
           method: 'POST', 
           headers: {
             'Content-Type': 'application/json'
