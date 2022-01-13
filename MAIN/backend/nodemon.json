@@ -1,0 +1,9 @@
+{
+  "env": {
+    "DB_USER": "mosesveuki",
+    "DB_PASSWORD": "solia",
+    "DB_NAME": "mern-academind",
+    "GOOGLE_API_KEY": "AIzaSyCWvdYUvMMFnRAaevMBQcp20oLW_0uVKXM",
+    "JWT_KEY": "supersecret_dont_share"
+  }
+}
