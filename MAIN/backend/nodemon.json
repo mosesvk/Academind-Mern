@@ -3,7 +3,7 @@
     "DB_USER": "mosesveuki",
     "DB_PASSWORD": "solia",
     "DB_NAME": "mern-academind",
-    "GOOGLE_API_KEY": "AIzaSyCWvdYUvMMFnRAaevMBQcp20oLW_0uVKXM",
+    "GOOGLE_API_KEY": "AIzaSyDUMrXi2DVcUvFUEquuUtT_oEcOD0TIT6c",
     "JWT_KEY": "supersecret_dont_share"
   }
 }
