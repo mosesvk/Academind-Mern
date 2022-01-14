@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +21,6 @@ const UserPlaces = lazy(() => import('/places/pages/UserPlaces'))
 const UpdatePlace = lazy(() => import('./places/pages/UpdatePlace'))
 const Auth = lazy(() => import('./user/pages/Auth'))
 
-
 const App = () => {
   const { token, login, logout, userId } = useAuth();
 
@@ -30,34 +29,20 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
-        <Route path="/:userId/places" exact>
-          <UserPlaces />
-        </Route>
-        <Route path="/places/new" exact>
-          <NewPlace />
-        </Route>
-        <Route path="/places/:placeId">
-          <UpdatePlace />
-        </Route>
+        <Route path="/" exact component={Users} />
+        <Route path="/:userId/places" exact component={UserPlaces} />
+        <Route path="/places/new" exact component={NewPlace} />
+        <Route path="/places/:placeId" component={UpdatePlace} />
         <Redirect to="/" />
       </Switch>
     );
   } else {
     routes = (
       <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
-        <Route path="/:userId/places" exact>
-          <UserPlaces />
-        </Route>
-        <Route path="/auth">
-          <Auth />
-        </Route>
-        <Redirect to="/auth" />
+        <Route path="/" exact component={Users} />
+        <Route path="/:userId/places" exact component={UserPlaces} />
+        <Route path="/auth" component={Auth} />
+        <Redirect to="/auth"/>
       </Switch>
     );
   }
