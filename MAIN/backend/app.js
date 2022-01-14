@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 app.use( express.static(path.join('public')));
 
-// * you only need if splitting deployments
-// app.use((req, res, next) => {
+
+
 //   res.setHeader('Access-Control-Allow-Origin', '*');
 //   res.setHeader(
 //     'Access-Control-Allow-Headers',
@@ -25,6 +25,7 @@ app.use( express.static(path.join('public')));
 //   );
 //   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
 //   next();
+//
 // });
 
 app.use('/api/places', placesRoutes);
