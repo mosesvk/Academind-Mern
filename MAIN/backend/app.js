@@ -58,7 +58,7 @@ mongoose
     }
   )
   .then(() => {
-    app.listen(5555);
+    app.listen(process.env.PORT || 5555);
   })
   .catch(err => {
     console.log(err);
