@@ -15,22 +15,19 @@ app.use(bodyParser.json());
 
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   );
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-  next();
 
-// });
+  next();
+});
 
 app.use('/api/places', placesRoutes);
 app.use('/api/users', usersRoutes);
-
-app.use((req, res, next) => {
-  res.sendFile(__dirname, 'public', 'index.html')
-})
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
@@ -52,16 +49,10 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.4gc6f.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
+    `mongodb+srv://academind:ORlnOPLKvIH9M9hP@cluster0-ntrwp.mongodb.net/mern?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(process.env.PORT || 5555);
+    app.listen(5000);
   })
   .catch(err => {
     console.log(err);
